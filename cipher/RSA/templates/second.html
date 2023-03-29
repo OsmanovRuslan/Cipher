@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+	<form method="post">{% csrf_token %}
+		<p>
+			<b>Сообщение для шифрования</b>
+		</p>
+		<input type="text" size="150" name="crypto_text">
+		<p>
+			<input type="submit" name="crypto" value="Отправить"> 
+			<input type="reset" value="Очистить">
+			<input type="submit" name="decrypto" value="Дешифровать"></p>
+	</form>
+
+	<div>
+		{% if start %}
+		<div>
+			<p><output>{{start}}</output></p>
+		</div>
+		{% endif %}
+	</div>
+	<div>
+		{% if ans %}
+		<div>
+			<p><output>{{ans}}</output></p>
+		</div>
+		{% endif %}
+	</div>
+</body>
+</html>
