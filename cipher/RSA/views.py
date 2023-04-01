@@ -37,5 +37,6 @@ def crypto(message, key_public):
 
 
 def decrypto(message, key_private):
-    dcrpt = rsa.decrypt(message, key_private)
+    msg = message.encode("utf-8")
+    dcrpt = rsa.decrypt(msg, key_private)
     return dcrpt
