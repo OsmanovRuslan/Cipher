@@ -11,8 +11,9 @@ def second(request):
         key_pub, key_priv = keys()
         if "crypto" in request.POST:
             user_message = request.POST["crypto_text"]
+            user_message = crypto(user_message, key_pub)
             answer = {
-                "ans": crypto(user_message, key_pub),
+                "ans": user_message,
                 "start": key_pub
             }
         elif "decrypto" in request.POST:
@@ -37,6 +38,5 @@ def crypto(message, key_public):
 
 
 def decrypto(message, key_private):
-    msg = message.encode("utf-8")
-    dcrpt = rsa.decrypt(msg, key_private)
+    dcrpt = rsa.decrypt(message, key_private)
     return dcrpt
